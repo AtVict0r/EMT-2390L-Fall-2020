@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Oluwasegun Atolagbe
+# EMT 2390L - OL50
+
+getValue () {
+    # Get multiplication value from user
+    read -p "Enter multiplication value (2 - 10): " table
+
+    # Validate for value in  range 2 - 10 inclusive
+    until [ $table -ge 2 ] && [ $table -le 10 ]; do
+        # Warning message
+        echo "Value entered is not in range."
+        # Ask user for value again
+        getValue
+    done
+}
+
+displayTable () {
+    # Continue adding value until it is equal or less than 100
+    for (( i = $table; i <= 100; i+=$table)); do
+        # After each addition, display current value
+        echo -n -e "$i \t"
+    done
+    echo 
+}
+
+getValue
+displayTable

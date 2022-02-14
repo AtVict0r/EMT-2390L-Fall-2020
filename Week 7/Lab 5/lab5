@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Oluwasegun Atolagbe
+# EMT 2390L - OL50
+
+COMPETITION="City Tech Olympics"
+RANKING=10
+
+getRanking () {
+    # Get ranking from user
+    read -p "Enter your ranking (1 - 10): " RANKING
+
+    # Validate for value in  range 1 - 10 inclusive
+    until [ $RANKING -ge 1 ] && [ $RANKING -le 10 ]; do
+        # Warning message
+        echo "Rank entered is not in range."
+        # Ask user for value again
+        getRanking
+    done
+}
+
+displayMedal () {
+    # variable to store medals
+    local MEDAL
+
+    # 1 - Gold Medal
+    if [ $RANKING -eq 1 ]; then
+        MEDAL=Gold
+    # 2 - Silver Medal
+    elif [ $RANKING -eq 2 ]; then
+        MEDAL=Silver
+    # 3 - Bronze Medal
+    elif [ $RANKING -eq 3 ]; then
+        MEDAL=Bronze
+    # [4 - 10] - No Medal
+    else 
+        MEDAL=No
+    fi
+
+    # Display award
+    echo "In $COMPETITION you got: $MEDAL Medal"
+}
+
+getRanking
+displayMedal

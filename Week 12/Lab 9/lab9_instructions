@@ -1,0 +1,27 @@
+
+Lab 9
+
+Instructions:
+
+    Open the terminal and using vi/vim create a new script and name it lab9
+    Insert at the top of your file a comment with your name, class and section number (e.g. #John Doe, EMT 2390L - OL123). 
+    This lab will help a user set permissions in a user-friendly way.
+    First create a new file and call it data (this file is for testing purposes only and can be empty).
+    In your script named lab9 do the following:
+    Ask the user for the name of the file whose permissions wants to modify and store it in a variable name filename (make sure to create the data file first) as indicated above.
+    Set the default owner permissions to read, write, and execute (7 in octal notation) and the group permissions to read and write (6 in octal notation), but allow the user to determine what “everybody/world” permissions to grant to the file: read, write, execute. Use octal notation according to the following table:
+    Octal notation for file permissions
+
+    To get the right permissions show the the user the following questions:
+        To grant the world read permissions enter 1, otherwise 0:
+        To grant the world write permissions enter 1, otherwise 0:
+        To grant the world execute permissions enter 1, otherwise 0:
+    Store the answers in variables to process them later.
+    Your script should then use the chmod command with the file name provided by the user (e.g. data) and set the appropriate permissions as selected by the user. Use the appropriate decision statement to accomplish this.
+        e.g., if the user chose read, write and execute, your script should set the permissions to 767 but if the user chose read and execute only then it should set the permissions to 765.
+    At the end of the script include the following command to show the modified permissions: ls -la
+    Save the script and make it executable (HINT: use the chmod command with mode 755).
+    Execute the script (HINT: use dot slash ./ combination, followed by your script name) and fix any errors.
+    Submit here on Blackboard your script file. DO NOT submit screen shots, ZIP files, or any other kind of file. Submission is on Blackboard ONLY. DO NOT send emails or messages, use the Blackboard link to the lab in order to submit.
+    Deadline: 12/02 at 11:59PM
+

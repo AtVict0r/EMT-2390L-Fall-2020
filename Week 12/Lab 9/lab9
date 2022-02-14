@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Oluwasegun Atolagbe
+# EMT 2390L - OL50
+
+permission=760
+
+read -p 'Name of file to modify: ' filename
+
+read -p 'To grant the world read permissions enter 1, otherwise 0: ' choice1
+choice+=$choice1
+
+read -p 'To grant the world write permissions enter 1, otherwise 0: ' choice2
+choice+=$choice2
+
+read -p 'To grant the world execute permissions enter 1, otherwise 0: ' choice3
+choice+=$choice3
+
+case $choice in
+    001)    permission=$(( permission + 1 )) ;; 
+    010)    permission=$(( permission + 2 )) ;; 
+    011)    permission=$(( permission + 3 )) ;;
+    100)    permission=$(( permission + 4 )) ;;
+    101)    permission=$(( permission + 5 )) ;; 
+    110)    permission=$(( permission + 6 )) ;;
+    111)    permission=$(( permission + 7 )) ;;
+esac
+
+chmod $permission $filename
+
+ls -la $filename

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Oluwasegun Atolagbe
+# EMT 2390L - OL50
+
+midValue () {
+    echo "-----------------------"
+
+    # Get Plane 1 value from user
+    echo "For Plane 1"
+    read -p "Enter X value: " x1
+    read -p "Enter Y value: " y1
+
+    echo "-----------------------"
+
+    # Get Plane 2 value from user
+    echo "For Plane 2"
+    read -p "Enter X value: " x2
+    read -p "Enter Y value: " y2
+
+    echo "-----------------------"
+
+    # Use integer division to calculate average from plane values
+    local xmid=$(( ($x1 + $x2) / 2))
+    local ymid=$(( ($y1 + $y2) / 2))
+
+    # Display average values
+    echo "The midpoint is approximately ($xmid, $ymid)"
+}
+
+echo "Find midpoint"
+midValue

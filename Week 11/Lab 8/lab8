@@ -1,0 +1,230 @@
+#!/bin/bash
+
+# Oluwasegun Atolagbe
+# EMT 2390L - OL50
+
+: '
+    Your script will provide the user with a simple calculator. To accomplish it perform the following steps:
+    Show the user a menu with the following options:
+        1-  Add
+        2-  Subtract
+        3-  Multiply
+        4-  Exponentiation
+        5-  Divide
+        6-  Remainder
+        7-  Middle
+        8-  Exit
+    The user must select a valid option from the menu, otherwise display a message “Option not available. Try again”
+    Each option should ask the user for two numbers as input, compute the corresponding operation and display the result.
+    When testing the operations, especially those involving division, choose operands that will yield a whole number.
+    For Middle, compute the middle number between the 2 numbers (e.g. Middle between 2 and 10 is 6)
+    The script will continuously execute until the user selects option 8- Exit.
+'
+# Function for performing addition operation
+add () {
+    local a
+    local b 
+
+    read -p $'\x0aEnter first number: ' a # Take user Input for local variable a
+    # Check if a is a valid number for finding sum
+    # Re-Enter if false
+    until [[ $a =~ ^[0-9]+$ ]]; do
+        read -p $'\x0aEnter a valid first number: ' a
+    done
+    
+    read -p 'Enter second number: ' b # Take user Input for local variable b
+    # Check if b is a valid number for finding sum
+    # Re-Enter if false
+    until [[ $b =~ ^[0-9]+$ ]]; do
+        read -p $'\x0aEnter a valid second number: ' b
+    done
+
+    echo "Operation: a + b" # Display operation
+    echo -e "Result: $(( a + b )) \n" # Display addition result
+}
+
+# Function for performing subtraction operation
+sub () {
+    local a
+    local b
+
+    read -p $'\x0aEnter first number: ' a # Take user Input for local variable a
+    # Check if a is a valid number for finding difference
+    # Re-Enter if false
+    until [[ $a =~ ^[0-9]+$ ]]; do
+        read -p $'\x0aEnter a valid first number: ' a
+    done
+    
+    read -p 'Enter second number: ' b # Take user Input for local variable b
+    # Check if b is a valid number for finding difference
+    # Re-Enter if false
+    until [[ $b =~ ^[0-9]+$ ]]; do
+        read -p $'\x0aEnter a valid second number: ' b
+    done
+
+    echo "Operation: a - b" # Display operation
+    echo -e "Result: $(( a - b )) \n" # Display subtraction result
+}
+
+# Function for performing multiplication operation
+mul () {
+    local a
+    local b
+
+    read -p $'\x0aEnter first number: ' a # Take user Input for local variable a
+    # Check if a is a valid number for finding product
+    # Re-Enter if false
+    until [[ $a =~ ^[0-9]+$ ]]; do
+        read -p $'\x0aEnter a valid first number: ' a
+    done
+    
+    read -p 'Enter second number: ' b # Take user Input for local variable b
+    # Check if b is a valid number for finding product
+    # Re-Enter if false
+    until [[ $b =~ ^[0-9]+$ ]]; do
+        read -p $'\x0aEnter a valid second number: ' b
+    done
+
+    echo "Operation: a * b" # Display operation
+    echo -e "Result: $(( a * b )) \n" # Display multiplication result
+}
+
+# Function for performing exponential operation
+exp () {
+    local a
+    local b
+
+    read -p $'\x0aEnter first number: ' a # Take user Input for local variable a
+    # Check if a is a valid number for finding exponential
+    # Re-Enter if false
+    until [[ $a =~ ^[0-9]+$ ]]; do
+        read -p $'\x0aEnter a valid first number: ' a
+    done
+    
+    read -p 'Enter second number: ' b # Take user Input for local variable b
+    # Check if b is a valid number for finding exponential
+    # Re-Enter if false
+    until [[ $b =~ ^[0-9]+$ ]]; do
+        read -p $'\x0aEnter a valid second number: ' b
+    done
+
+    echo "Operation: a ** b" # Display operation
+    echo -e "Result: $(( a ** b )) \n" # Display exponential result
+}
+
+# Function for performing division operation
+div () {
+    local a
+    local b
+
+    # Take user Input 
+    read -p $'\x0aEnter first number: ' a # Take user Input for local variable a
+    # Check if a is a valid number for finding quotient
+    # Re-Enter if false
+    until [[ $a =~ ^[0-9]+$ && $a -gt 0 ]]; do
+        echo "First number has to be greater than zero" # Display instruction
+        read -p $'\x0aEnter a valid first number: ' a
+    done
+    
+    read -p 'Enter second number: ' b # Take user Input for local variable b
+    # Check if b is a valid number for finding quotient
+    # Re-Enter if false
+    until [[ $b =~ ^[0-9]+$ && $b -gt 0 && $b -le $a ]]; do
+        echo "Second number has to be greater than zero" # Display instruction
+        echo "Second number has to be less than or  equal to first number" # Display instruction
+        read -p $'\x0aEnter a valid second number: ' b
+    done
+
+    echo "Operation: a / b" # Display operation
+    echo -e "Result: $(( a / b )) \n" # Display division result
+}
+
+# Function for performing modulus operation
+mod () {
+    local a
+    local b
+
+    read -p $'\x0aEnter first number: ' a # Take user Input for local variable a
+    # Check if a is a valid number for finding modulus
+    # Re-Enter if false
+    until [[ $a =~ ^[0-9]+$ && $a -gt 0 ]]; do
+        echo "First number has to be greater than zero" # Display instruction
+        read -p $'\x0aEnter a valid first number: ' a
+    done
+    
+    read -p 'Enter second number: ' b # Take user Input for local variable b
+    # Check if b is a valid number for finding modulus
+    # Re-Enter if false
+    until [[ $b =~ ^[0-9]+$ && $b -gt 0 && $b -le $a ]]; do
+        echo "Second number has to be greater than zero" # Display instruction
+        echo "Second number has to be less than or equal to first number" # Display instruction
+        read -p $'\x0aEnter a valid second number: ' b
+    done
+
+    echo "Operation: a % b " # Display operation
+    echo -e "Result: $(( a % b )) \n" # Display modulus result
+}
+
+# Function for finding middle value 
+mid () {
+    local a
+    local b
+
+    read -p $'\x0aEnter first number: ' a # Take user Input for local variable a
+    # Check if a is a valid number for finding mid point
+    # Re-Enter if false
+    until [[ $a =~ ^[0-9]+$ ]]; do
+        read -p $'\x0aEnter a valid first number: ' a
+    done
+    
+    read -p 'Enter second number: ' b # Take user Input for local variable b
+    # Check if b is a valid number for finding mid point
+    # Re-Enter if false
+    until [[ $b =~ ^[0-9]+$ && $b -ge $a ]]; do
+        echo "Second number has to be greater than or equal to first number" # Display instruction
+        read -p $'\x0aEnter a valid second number: ' b
+    done
+
+    local tot=$(( a + b )) # Total
+    local avg=$(( tot / 2 )) # Average of sum
+    local rem=$(( tot % 2 )) # Check is total is odd or even
+
+    echo "Operation: (a + b) / 2 " # Display operation
+    if [ $rem -eq 1 ]; then
+        echo -e "Result: $avg 1/2 \n" # Display average + half if odd
+    else 
+        echo -e "Result: $avg \n" # Display average if even
+    fi
+}
+
+# Loop menu until user exit
+while :; do
+    # Display choice menu
+    echo "Simple Calculator Menu"
+    echo "1- Addition"
+    echo "2- Subtraction"
+    echo "3- Multiplication"
+    echo "4- Exponentiation"
+    echo "5- Division"
+    echo "6- Remainder"
+    echo "7- Middle"
+    echo "8- Exit"
+
+    # Read user choice
+    read -p "Enter Choice: " opt 
+
+    # Switch Case to call calculator operations function
+    case $opt in
+        1) add ;; 
+        2) sub ;; 
+        3) mul ;; 
+        4) exp ;;
+        5) div ;;
+        6) mod ;; 
+        7) mid ;; 
+        # Break loop
+        8) break ;; 
+        # Display error message
+        *) echo -e "Option not valid. Try again!\n" ;; 
+    esac
+done

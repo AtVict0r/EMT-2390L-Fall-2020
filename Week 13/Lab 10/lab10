@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Oluwasegun Atolagbe
+# EMT 2390L - OL50
+
+rm index.html
+read -p 'Enter URL: ' website
+wget $website
+
+while : ; do
+    # Display choice menu
+    echo "Menu"
+    echo " 1- Check availability: This option will allow to determine whether the URL is reachable."
+    echo " 2- Edit the file: This option will open the downloaded file with vi."
+    echo " 3- View it in browser: This option will launch the default browser and open the downloaded file."
+    echo " 4- Exit: To exit the script"
+
+    # Read user choice
+    read -p "    Enter Choice: " opt
+    echo
+
+    case $opt in
+        1)    ping -w 5 $website ;; 
+        2)    vim index.html ;; 
+        3)    xdg-open ./index.html;;
+        *)    break ;;
+    esac
+    echo
+done

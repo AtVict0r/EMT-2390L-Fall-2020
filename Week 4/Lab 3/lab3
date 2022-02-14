@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Oluwasegun Atolagbe
+# EMT 2390L - OL50
+
+name="Oluwasegun Atolagbe"
+age=##
+borough=Brooklyn
+state="New York"
+college="New York City College of Technology"
+major="Computer Engineering Technology"
+gpa=#.##
+class="EMT 2390L"
+
+echo "Hello my name is $name. I am $age years-old. I live in $borough, $state. I am a student at $college. My major is $major and I have a GPA of $gpa. This class is $class."

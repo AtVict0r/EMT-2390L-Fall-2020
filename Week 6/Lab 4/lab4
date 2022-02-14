@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Oluwasegun Atolagbe
+# EMT 2390L - OL50
+
+course="EMT 2390L"
+score=95
+
+displayName () {
+    local name=$1
+
+    echo "$name Grade Report"
+}
+
+displayGrade () {
+    local grade
+
+    # A: 93 - 100
+    if [ "$score" -ge 93 ] && [ "$score" -le 100 ]; then
+        grade=A
+    
+    # A-: 90 - 92
+    elif [ "$score" -ge 90 ] && [ "$score" -le 92 ]; then
+        grade=A-
+
+    # B+: 87 - 89
+    elif [ "$score" -ge 87 ] && [ "$score" -le 89 ]; then
+        grade=B+
+
+    # B: 83 - 86
+    elif [ "$score" -ge 83 ] && [ "$score" -le 86 ]; then
+        grade=B
+
+    # B-: 80 - 82
+    elif [ "$score" -ge 80 ] && [ "$score" -le 82 ]; then
+        grade=B-
+
+    # C+: 77 - 79
+    elif [ "$score" -ge 77 ] && [ "$score" -le 79 ]; then
+        grade=C+
+
+    # C: 70 - 76
+    elif [ "$score" -ge 70 ] && [ "$score" -le 76 ]; then
+        grade=C
+
+    # D: 60 - 69
+    elif [ "$score" -ge 60 ] && [ "$score" -le 69 ]; then
+        grade=D
+
+    # F: 0 - 59
+    elif [ "$score" -ge 0 ] && [ "$score" -le 59 ]; then
+        grade=F
+    
+    else
+        echo "$score is not a valid score."
+
+    fi
+
+    echo "You got a(n) $grade in $course"
+}
+
+displayName "Oluwasegun Atolagbe"
+displayGrade
